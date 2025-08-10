@@ -1,0 +1,468 @@
+/* Endpointify-Inspired Legal Document Validation System */
+
+/* Global Background with Endpointify Theme */
+body, .App {
+  background: #000000; /* Pure black like Endpointify */
+  background-image: 
+    radial-gradient(at 20% 80%, rgba(0, 176, 244, 0.15) 0%, transparent 50%),
+    radial-gradient(at 80% 20%, rgba(0, 114, 229, 0.12) 0%, transparent 50%),
+    radial-gradient(at 40% 40%, rgba(0, 255, 229, 0.08) 0%, transparent 50%);
+  min-height: 100vh;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated Background Particles */
+.App::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(0, 176, 244, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 255, 229, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(0, 114, 229, 0.06) 0%, transparent 50%);
+  z-index: -1;
+  animation: backgroundMove 15s ease-in-out infinite;
+}
+
+@keyframes backgroundMove {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-5px, -5px) scale(1.01); }
+}
+
+/* Glass Card Base Class - Endpointify Style */
+.glass-card {
+  background: rgba(0, 176, 244, 0.05);
+  border-radius: 16px;
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 176, 244, 0.15),
+    inset 0 1px 0 0 rgba(0, 176, 244, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 176, 244, 0.2);
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 176, 244, 0.4), transparent);
+}
+
+.glass-card:hover {
+  background: rgba(0, 176, 244, 0.08);
+  border-color: rgba(0, 176, 244, 0.3);
+  box-shadow: 
+    0 16px 64px rgba(0, 176, 244, 0.2),
+    0 0 0 1px rgba(0, 176, 244, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Enhanced AppBar - Endpointify Style */
+.MuiAppBar-root {
+  background: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(0, 176, 244, 0.2) !important;
+  box-shadow: 0 4px 30px rgba(0, 176, 244, 0.1) !important;
+}
+
+.MuiToolbar-root {
+  background: transparent !important;
+}
+
+.MuiAppBar-root .MuiTypography-root {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 2px 10px rgba(0, 176, 244, 0.3);
+  background: linear-gradient(45deg, #ffffff, #00B0F4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Glass Tabs - Endpointify Theme */
+.MuiTabs-root {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  margin: 16px;
+  border: 1px solid rgba(0, 176, 244, 0.2);
+}
+
+.MuiTab-root {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  min-height: 56px !important;
+  transition: all 0.3s ease !important;
+}
+
+.MuiTab-root.Mui-selected {
+  color: #00B0F4 !important;
+  font-weight: 600 !important;
+  background: rgba(0, 176, 244, 0.15);
+  border-radius: 8px;
+}
+
+.MuiTabs-indicator {
+  background: linear-gradient(90deg, #00B0F4, #00FFE5) !important;
+  height: 3px !important;
+  border-radius: 2px !important;
+}
+
+/* Glass Buttons - Endpointify Theme */
+.MuiButton-contained {
+  background: linear-gradient(135deg, rgba(0, 176, 244, 0.3), rgba(0, 255, 229, 0.2)) !important;
+  border: 1px solid rgba(0, 176, 244, 0.4) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(10px) !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 15px rgba(0, 176, 244, 0.25) !important;
+  transition: all 0.3s ease !important;
+}
+
+.MuiButton-contained:hover {
+  background: linear-gradient(135deg, rgba(0, 176, 244, 0.5), rgba(0, 255, 229, 0.3)) !important;
+  border-color: rgba(0, 176, 244, 0.6) !important;
+  box-shadow: 0 8px 25px rgba(0, 176, 244, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+.MuiButton-outlined {
+  border: 1px solid rgba(0, 176, 244, 0.3) !important;
+  color: #00B0F4 !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 12px !important;
+}
+
+.MuiButton-outlined:hover {
+  border-color: rgba(0, 176, 244, 0.6) !important;
+  background: rgba(0, 176, 244, 0.1) !important;
+}
+
+/* Glass Form Controls - Endpointify Style */
+.MuiTextField-root .MuiOutlinedInput-root {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.MuiOutlinedInput-root {
+  border: 1px solid rgba(0, 176, 244, 0.3) !important;
+}
+
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(0, 176, 244, 0.5) !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #00B0F4 !important;
+  border-width: 2px !important;
+}
+
+.MuiInputLabel-root {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.MuiInputLabel-root.Mui-focused {
+  color: #00B0F4 !important;
+}
+
+.MuiInputBase-input {
+  color: #ffffff !important;
+}
+
+/* Glass Tables - Endpointify Theme */
+.MuiTableContainer-root {
+  background: rgba(0, 0, 0, 0.6) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(0, 176, 244, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(0, 176, 244, 0.15) !important;
+}
+
+.MuiTableHead-root {
+  background: rgba(0, 176, 244, 0.1) !important;
+}
+
+.MuiTableCell-root {
+  color: rgba(255, 255, 255, 0.9) !important;
+  border-bottom: 1px solid rgba(0, 176, 244, 0.15) !important;
+}
+
+.MuiTableCell-head {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+.MuiTableRow-root:hover {
+  background: rgba(0, 176, 244, 0.08) !important;
+}
+
+/* Glass Chips - Endpointify Colors */
+.MuiChip-filled {
+  background: rgba(0, 176, 244, 0.2) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(0, 176, 244, 0.3) !important;
+  font-weight: 600 !important;
+}
+
+.MuiChip-colorSuccess {
+  background: rgba(76, 175, 80, 0.2) !important;
+  border-color: rgba(76, 175, 80, 0.4) !important;
+}
+
+.MuiChip-colorError {
+  background: rgba(255, 82, 82, 0.2) !important;
+  border-color: rgba(255, 82, 82, 0.4) !important;
+}
+
+.MuiChip-colorWarning {
+  background: rgba(255, 167, 38, 0.2) !important;
+  border-color: rgba(255, 167, 38, 0.4) !important;
+}
+
+/* Glass Alerts - Endpointify Style */
+.MuiAlert-root {
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(0, 176, 244, 0.2) !important;
+  border-radius: 12px !important;
+  color: #ffffff !important;
+}
+
+.MuiAlert-standardError {
+  background: rgba(255, 82, 82, 0.15) !important;
+  border-color: rgba(255, 82, 82, 0.3) !important;
+}
+
+.MuiAlert-standardSuccess {
+  background: rgba(76, 175, 80, 0.15) !important;
+  border-color: rgba(76, 175, 80, 0.3) !important;
+}
+
+.MuiAlert-standardInfo {
+  background: rgba(0, 176, 244, 0.15) !important;
+  border-color: rgba(0, 176, 244, 0.3) !important;
+}
+
+/* Glass Accordions - Endpointify Theme */
+.MuiAccordion-root {
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(0, 176, 244, 0.15) !important;
+  border-radius: 12px !important;
+  margin: 8px 0 !important;
+  box-shadow: none !important;
+}
+
+.MuiAccordion-root:before {
+  display: none !important;
+}
+
+.MuiAccordionSummary-root {
+  background: rgba(0, 176, 244, 0.05) !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.MuiAccordionSummary-content .MuiTypography-root {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+.MuiAccordionDetails-root {
+  background: rgba(0, 0, 0, 0.4) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Upload Zone - Endpointify Style */
+.upload-zone {
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: 2px dashed rgba(0, 176, 244, 0.3) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(15px) !important;
+  transition: all 0.4s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.upload-zone::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 176, 244, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.upload-zone:hover::before {
+  left: 100%;
+}
+
+.upload-zone:hover {
+  background: rgba(0, 176, 244, 0.1) !important;
+  border-color: rgba(0, 176, 244, 0.5) !important;
+  box-shadow: 0 0 30px rgba(0, 176, 244, 0.3) !important;
+  transform: translateY(-4px) !important;
+}
+
+.upload-zone.drag-active {
+  background: rgba(0, 176, 244, 0.2) !important;
+  border-color: rgba(0, 176, 244, 0.6) !important;
+  box-shadow: 0 0 40px rgba(0, 176, 244, 0.4) !important;
+}
+
+/* Glass Progress Bars - Endpointify Colors */
+.MuiLinearProgress-root {
+  background: rgba(0, 0, 0, 0.6) !important;
+  border-radius: 10px !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(0, 176, 244, 0.2) !important;
+}
+
+.MuiLinearProgress-bar {
+  background: linear-gradient(90deg, #00B0F4, #00FFE5) !important;
+  border-radius: 10px !important;
+}
+
+/* Glass List Items */
+.MuiListItem-root {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border-radius: 8px !important;
+  margin: 4px 0 !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(0, 176, 244, 0.1) !important;
+}
+
+.MuiListItemText-primary {
+  color: #ffffff !important;
+}
+
+.MuiListItemText-secondary {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Enhanced Scrollbars - Endpointify Theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, rgba(0, 176, 244, 0.6), rgba(0, 255, 229, 0.4));
+  border-radius: 10px;
+  border: 1px solid rgba(0, 176, 244, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, rgba(0, 176, 244, 0.8), rgba(0, 255, 229, 0.6));
+}
+
+/* Switch Components - Endpointify Colors */
+.MuiSwitch-switchBase.Mui-checked {
+  color: #00B0F4 !important;
+}
+
+.MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
+  background-color: #00B0F4 !important;
+}
+
+/* Slider Components - Endpointify Colors */
+.MuiSlider-root {
+  color: #00B0F4 !important;
+}
+
+.MuiSlider-track {
+  background: linear-gradient(90deg, #00B0F4, #00FFE5) !important;
+}
+
+.MuiSlider-thumb {
+  background: linear-gradient(135deg, #00B0F4, #00FFE5) !important;
+  border: 2px solid rgba(0, 176, 244, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(0, 176, 244, 0.4) !important;
+}
+
+.MuiSlider-mark {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.MuiSlider-markActive {
+  background: #00B0F4 !important;
+}
+
+/* Status Indicators - Endpointify Colors */
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 176, 244, 0.2);
+}
+
+.status-healthy {
+  background: radial-gradient(circle, rgba(76, 175, 80, 0.8), rgba(76, 175, 80, 0.4));
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.status-warning {
+  background: radial-gradient(circle, rgba(255, 167, 38, 0.8), rgba(255, 167, 38, 0.4));
+  box-shadow: 0 0 10px rgba(255, 167, 38, 0.5);
+}
+
+.status-error {
+  background: radial-gradient(circle, rgba(255, 82, 82, 0.8), rgba(255, 82, 82, 0.4));
+  box-shadow: 0 0 10px rgba(255, 82, 82, 0.5);
+}
+
+/* Special Effects - Endpointify Glow */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(0, 176, 244, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(0, 176, 244, 0.5); }
+}
+
+.glass-glow {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .glass-card {
+    border-radius: 12px;
+    margin: 8px;
+  }
+  
+  .MuiContainer-root {
+    padding: 8px !important;
+  }
+  
+  .MuiTabs-root {
+    margin: 8px;
+  }
+}

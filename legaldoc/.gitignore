@@ -27,3 +27,7 @@ Thumbs.db
 .venv
 /venv
 env/
+
+# Nested Git repositories
+Spam_mail_detector_using_ML/
+frontend/
