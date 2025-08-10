@@ -1,0 +1,3 @@
+path,expected_signature_valid
+samples/signed_contract_valid.pdf,True
+samples/signed_contract_invalid.pdf,False

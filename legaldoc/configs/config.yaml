@@ -1,0 +1,75 @@
+model:
+  nlp:
+    model_name: "distilbert-base-uncased"
+    max_length: 512
+    batch_size: 16
+    learning_rate: 2e-5
+    epochs: 10
+  
+  vision:
+    model_name: "resnet50"
+    image_size: 224
+    batch_size: 32
+    learning_rate: 1e-4
+    epochs: 15
+  
+  ensemble:
+    weights:
+      nlp: 0.3
+      vision: 0.2
+      rules: 0.5
+  decision_fusion:
+    ensemble_threshold: 0.3  # Updated from optimization
+  
+  # Add these new settings
+  rules_validator:
+    minimum_confidence: 0.2  # Lower the bar for rules
+    clause_threshold: 0.3    # Make clause detection more lenient
+
+paths:
+  data_dir: "data/"
+  models_dir: "models/"
+  logs_dir: "logs/"
+  temp_dir: "temp/"
+
+processing:
+  ocr:
+    engine: "easyocr"
+    languages: ["en"]
+  
+  pdf:
+    dpi: 300
+    quality: 95
+
+validation:
+  mrz:
+    enabled: true
+    strict_mode: false
+  
+  signatures:
+    enabled: true
+    confidence_threshold: 0.8
+  
+  clauses:
+    required_keywords: ["agreement", "contract", "legal", "terms"]
+    min_confidence: 0.7
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  debug: false
+
+
+file_processing:
+  max_file_size_mb: 50  # Increase from default (probably 5MB)
+  max_text_length: 1000000  # Increase text length limit
+  
+supported_formats:
+  - pdf
+  - docx
+  - doc  
+  - txt  # Make sure txt is explicitly listed
+  - csv
+  - jpg
+  - jpeg
+  - png

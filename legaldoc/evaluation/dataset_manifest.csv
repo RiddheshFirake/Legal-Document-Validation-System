@@ -1,0 +1,7 @@
+file_path,label,category,notes
+dataset/edge_cases/fake_legal_doc.txt,not_legal,edge_case,Text document
+dataset/legal/CUAD_v1_README.txt,legal,legal_document,CUAD legal contract; Text document
+dataset/legal/legal_text_classification.csv,legal,legal_document,CSV data file
+dataset/legal/sample_employment_contract.txt,legal,legal_document,Contract document; Text document
+dataset/non_legal/epi_r.csv,not_legal,non_legal_document,CSV data file
+dataset/non_legal/sample_recipe.txt,not_legal,non_legal_document,Recipe content; Text document

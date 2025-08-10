@@ -1,0 +1,5 @@
+image_path,label
+D:/ML legal model/legaldoc/samples/images/passport_auth_1.jpg,authentic
+D:/ML legal model/legaldoc/samples/images/passport_auth_2.jpg,authentic
+D:/ML legal model/legaldoc/samples/images/passport_forged_1.jpg,forged
+D:/ML legal model/legaldoc/samples/images/passport_forged_2.jpg,forged

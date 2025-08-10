@@ -1,0 +1,8 @@
+doc_type,clause_name,severity,pattern
+Employment Contract,Governing Law,CRITICAL,\bgoverning law\b
+Employment Contract,Confidentiality,MAJOR,\bconfidentialit(y|ies)\b
+Employment Contract,Termination,MAJOR,\btermination\b
+NDA,Parties,MAJOR,\bparty|parties\b
+NDA,Term,MAJOR,\bterm\b
+NDA,Confidential Information,MAJOR,\bconfidential information\b
+NDA,Governing Law,CRITICAL,\bgoverning law\b

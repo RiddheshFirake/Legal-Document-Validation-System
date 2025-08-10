@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+.env
+
+# PyTorch/TensorFlow
+.DS_Store
+.ipynb_checkpoints
+models/
+.idea/
+.vscode/
+
+# NLTK Data
+nltk_data/
+
+# OS and IDE files
+.DS_Store
+.vscode/
+.idea/
+Thumbs.db
+
+# Virtual environments
+.env
+.venv
+/venv
+env/

@@ -1,0 +1,5 @@
+doc_id,path,doc_type,text
+doc_001,samples/nda_1.txt,NDA,"This Non-Disclosure Agreement (NDA) is made between Party A and Party B. The Governing Law is the State of X. Confidential Information shall remain protected during the Term."
+doc_002,samples/nda_2.txt,NDA,"The Parties agree to keep all Confidential Information secret. Term and termination are defined herein. Governing Law applies to the Agreement."
+doc_003,samples/empl_contract_1.txt,Employment Contract,"This Employment Agreement includes Confidentiality, Termination, and Governing Law clauses. Employee shall comply with company policies."
+doc_005,samples/empl_contract_3.txt,Employment Contract,"This Employment Agreement is made between Employer and Employee. It includes Confidentiality, Termination, Compensation, and Governing Law clauses."
