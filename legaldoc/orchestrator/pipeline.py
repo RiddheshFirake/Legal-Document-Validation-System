@@ -69,8 +69,7 @@ class DocumentValidationPipeline:
         if self.nlp_classifier is None:
             try:
                 from nlp.clf_infer import DocumentInference
-                from nlp.vectorize import TextVectorizer
-
+                
                 nlp_model_path = os.path.join(self.model_paths, 'nlp_model.pkl')
                 vectorizer_path = os.path.join(self.model_paths, 'vectorizer.pkl')
 
@@ -175,7 +174,7 @@ class DocumentValidationPipeline:
     def _extract_content(self, file_path: str, file_info: Dict) -> Dict:
         try:
             from ingest.file_detector import detect_file_type
-            from ingest.text_extractor import extract_text, extract_text_from_txt, extract_text_from_csv, extract_text_from_pdf, get_file_type
+            from ingest.text_extractor import extract_text_from_txt, extract_text_from_csv, extract_text_from_pdf, get_file_type
 
             file_type = get_file_type(file_path)
 
@@ -418,4 +417,3 @@ class DocumentValidationPipeline:
             'signature_validator': self.signature_validator is not None,
             'timestamp': time.time()
         }
-
